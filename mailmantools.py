@@ -3,7 +3,7 @@ import requests
 
 
 class MailmanTools:
-    __headers = {'User-Agent': 'mailman-tools/0.1'}
+    __headers = {'User-Agent': 'mailmantools/0.1'}
     membersListUrlFormat = '{0}/mailman/admin/{1}/members/list'
 
     def __init__(self, url, listname, adminpw):
@@ -17,8 +17,8 @@ class MailmanTools:
             params = self.__getbasequeryparams()
             page = requests.post(self.membersListUrlFormat.format(self.url, self.listname), headers=self.__headers,
                                  params=params)
-            pagehtml = html.fromstring(page.content)
-            members = pagehtml.xpath('//td/a/text()')
+            pagetree = html.fromstring(page.content)
+            members = pagetree.xpath('//td/a/text()')
             self.__cachedmembers = members
             return members
         else:
