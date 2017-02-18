@@ -42,10 +42,9 @@ class MailmanTools:
 
     def removemember(self, member):
         if member in self.__cachedmembers:
-            params = {'adminpw': self.__adminpw, 'send_unsub_ack_to_this_batch': 0, 'send_unsub_notifications_to_list_owner': 0,
-                     'unsubscribees': member}
-            page = requests.post(self.REMOVE_MEMBERS_URL_FORMAT.format(self.url, self.listname),
-                                 headers=self.__headers,
+            params = {'adminpw': self.__adminpw, 'send_unsub_ack_to_this_batch': 0,
+                      'send_unsub_notifications_to_list_owner': 0, 'unsubscribees': member}
+            page = requests.post(self.REMOVE_MEMBERS_URL_FORMAT.format(self.url, self.listname), headers=self.__headers,
                                  params=params)
             success = 'Successfully unsubscribed' in page.text
             if success:
