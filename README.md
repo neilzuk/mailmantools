@@ -1,4 +1,4 @@
-# mailman-tools
+# mailmantools
 The purpose of this Python module is to provide a set of tools that allow you to subscribe, un-subscribe and get a list of
  addresses from the mailing list software Mailman v2.
 
